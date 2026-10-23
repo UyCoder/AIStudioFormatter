@@ -1,0 +1,24 @@
+.uyghur-format-button {
+  background-color: #1a73e8; /* Google's blue color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'UKIJ Tuz', 'Alkatip', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 0 15px 10px; /* Add some space around the button */
+  display: block;
+  float: right;
+  clear: both;
+}
+
+.uyghur-format-button:hover {
+  background-color: #185abc;
+}
+
+.uyghur-format-button:disabled {
+  background-color: #80868b;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

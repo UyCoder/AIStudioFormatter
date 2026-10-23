@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "بىلىك قۇرالى",
+  "version": "3.0",
+  "description": "ئوڭ مائۇس بىلەن تېكىستنى ئۇيغۇرچىلاشتۇرۇش، خەت نۇسخىسى ۋە چوڭلۇقىنى تەڭشەش.",
+  "permissions": [
+    "contextMenus",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "48": "icon48.png"
+  }
+}
