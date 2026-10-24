@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قەدىرلىك قېرىندىشىمغا رامىزانلىق تەبرىك ۋە ئەسلەتمە</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Arabic/Uyghur -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Font styles and Uyghur system font fallbacks */
+        :root {
+            --font-naskh: 'Noto Naskh Arabic', 'UKIJ Tuz Tom', 'UKIJ Ekran', 'Microsoft Uighur', 'Alkatip Tor Tom', sans-serif;
+            --font-amiri: 'Amiri', 'UKIJ Chiwer Kesme', 'UKIJ Tuz Tom', 'Microsoft Uighur', serif;
+            --font-scheherazade: 'Scheherazade New', 'UKIJ Kufi', 'UKIJ Tuz Tom', 'Microsoft Uighur', serif;
+            --current-font: var(--font-naskh);
+        }
+
+        body {
+            font-family: var(--current-font);
+            background-color: #04121b;
+            color: #f8fafc;
+            overflow-x: hidden;
+            line-height: 1.9;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-style-1 { --current-font: var(--font-naskh); }
+        .font-style-2 { --current-font: var(--font-amiri); }
+        .font-style-3 { --current-font: var(--font-scheherazade); }
+
+        .arabic-text {
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            line-height: 2.1;
+        }
+
+        /* Islamic Subtle Geometric Pattern Overlay */
+        .bg-islamic-pattern {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+                              radial-gradient(rgba(212, 175, 55, 0.06) 1px, #04121b 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* Golden Gradients & Borders */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border: 1px solid rgba(234, 179, 8, 0.35);
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.08), inset 0 0 15px rgba(234, 179, 8, 0.05);
+        }
+
+        .gold-border-glow {
+            border: 1px solid rgba(250, 204, 21, 0.6);
+            box-shadow: 0 0 30px rgba(234, 179, 8, 0.25), inset 0 0 20px rgba(234, 179, 8, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(6, 38, 45, 0.85) 0%, rgba(4, 20, 30, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Hanging Lantern Animations */
+        @keyframes swaySlow {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        @keyframes swayMedium {
+            0%, 100% { transform: rotate(4deg); }
+            50% { transform: rotate(-4deg); }
+        }
+        @keyframes lanternGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.6)); opacity: 0.9; }
+            50% { filter: drop-shadow(0 0 18px rgba(250, 204, 21, 0.95)); opacity: 1; }
+        }
+
+        .lantern-sway-1 {
+            transform-origin: top center;
+            animation: swaySlow 6s ease-in-out infinite, lanternGlow 3s ease-in-out infinite;
+        }
+        .lantern-sway-2 {
+            transform-origin: top center;
+            animation: swayMedium 7.5s ease-in-out infinite, lanternGlow 4s ease-in-out infinite;
+        }
+
+        /* Crescent Pulse */
+        @keyframes moonFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.5)); }
+            50% { transform: translateY(-6px) rotate(2deg); filter: drop-shadow(0 0 28px rgba(250, 204, 21, 0.85)); }
+        }
+        .moon-animate {
+            animation: moonFloat 5s ease-in-out infinite;
+        }
+
+        /* Gate / Envelope Opening Transition */
+        #welcome-gate {
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gate-open {
+            opacity: 0 !important;
+            transform: scale(1.12) !important;
+            pointer-events: none !important;
+        }
+
+        /* Tasbih Ripple Effect */
+        @keyframes ripple {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+        .ripple-circle {
+            animation: ripple 0.6s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #04121b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a4c;
+            border-radius: 4px;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ca8a04;
+        }
+
+        /* Print styles for clean saving */
+        @media print {
+            .no-print { display: none !important; }
+            #welcome-gate { display: none !important; }
+            body { background: #04121b !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body class="bg-islamic-pattern min-h-screen relative selection:bg-amber-500 selection:text-slate-950 font-style-1">
+
+    <!-- Starry Sky & Golden Sparkles Canvas -->
+    <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Top Hanging Ramadan Lanterns (SVG) -->
+    <div class="fixed top-0 left-0 right-0 pointer-events-none z-20 flex justify-between px-4 sm:px-12 md:px-24 overflow-hidden h-48">
+        <!-- Right Lantern -->
+        <div class="lantern-sway-1 -mt-2">
+            <svg width="60" height="160" viewBox="0 0 60 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="30" y1="0" x2="30" y2="45" stroke="#eab308" stroke-width="2"/>
+                <path d="M22 45H38L42 55H18L22 45Z" fill="#ca8a04"/>
+                <path d="M30 38C33 38 35 41 35 45H25C25 41 27 38 30 38Z" stroke="#eab308" stroke-width="2"/>
+                <path d="M18 55H42L48 85L38 120H22L12 85L18 55Z" fill="url(#lanternGrad1)" stroke="#eab308" stroke-width="2"/>
+                <path d="M24 62H36L40 85L33 112H27L20 85L24 62Z" fill="#fef08a" fill-opacity="0.7"/>
+                <path d="M22 120H38L42 128H18L22 120Z" fill="#ca8a04"/>
+                <circle cx="30" cy="133" r="4" fill="#eab308"/>
+                <defs>
+                    <linearGradient id="lanternGrad1" x1="30" y1="55" x2="30" y2="120" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#f59e0b" stop-opacity="0.8"/>
+                        <stop offset="1" stop-color="#78350f" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Center Small Lantern (Hidden on very small screens) -->
+        <div class="lantern-sway-2 -mt-6 hidden sm:block">
+            <svg width="46" height="130" viewBox="0 0 60 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="30" y1="0" x2="30" y2="35" stroke="#eab308" stroke-width="1.5"/>
+                <path d="M22 35H38L42 45H18L22 35Z" fill="#ca8a04"/>
+                <path d="M18 45H42L48 75L38 110H22L12 75L18 45Z" fill="url(#lanternGrad2)" stroke="#fde047" stroke-width="2"/>
+                <path d="M24 52H36L40 75L33 102H27L20 75L24 52Z" fill="#fef08a" fill-opacity="0.85"/>
+                <path d="M22 110H38L42 118H18L22 110Z" fill="#ca8a04"/>
+                <defs>
+                    <linearGradient id="lanternGrad2" x1="30" y1="45" x2="30" y2="110" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#eab308" stop-opacity="0.8"/>
+                        <stop offset="1" stop-color="#064e3b" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Left Lantern -->
+        <div class="lantern-sway-2 -mt-1">
+            <svg width="55" height="150" viewBox="0 0 60 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="30" y1="0" x2="30" y2="40" stroke="#eab308" stroke-width="2"/>
+                <path d="M22 40H38L42 50H18L22 40Z" fill="#ca8a04"/>
+                <path d="M18 50H42L48 80L38 115H22L12 80L18 50Z" fill="url(#lanternGrad3)" stroke="#eab308" stroke-width="2"/>
+                <path d="M24 57H36L40 80L33 107H27L20 80L24 57Z" fill="#fef08a" fill-opacity="0.75"/>
+                <path d="M22 115H38L42 123H18L22 115Z" fill="#ca8a04"/>
+                <circle cx="30" cy="128" r="3.5" fill="#eab308"/>
+                <defs>
+                    <linearGradient id="lanternGrad3" x1="30" y1="50" x2="30" y2="115" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#f59e0b" stop-opacity="0.85"/>
+                        <stop offset="1" stop-color="#78350f" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SEALED ENVELOPE / ARCHED GATE OVERLAY
+         ========================================== -->
+    <div id="welcome-gate" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#030e16]/95 backdrop-blur-md">
+        <div class="max-w-md w-full glass-card gold-border-glow rounded-t-[140px] rounded-b-3xl p-8 pt-14 text-center relative overflow-hidden">
+            <!-- Decorative Inner Arch -->
+            <div class="absolute inset-3 border border-amber-400/25 rounded-t-[130px] rounded-b-2xl pointer-events-none"></div>
+            
+            <!-- Glowing Crescent & Star Icon -->
+            <div class="flex justify-center mb-6 moon-animate">
+                <svg width="90" height="90" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M68.5 72.5C48.8939 72.5 33 56.6061 33 37C33 25.4148 38.5453 15.1257 47.1292 8.6416C28.8037 11.4547 14.75 27.2896 14.75 46.4C14.75 67.4973 31.8527 84.6 52.95 84.6C67.4793 84.6 80.1157 76.4859 86.5584 64.5292C81.0315 69.5122 73.7604 72.5 68.5 72.5Z" fill="url(#moonGold)"/>
+                    <path d="M72 24L74.4 30.2L81 31L75.8 35.3L77.3 41.8L72 38.2L66.7 41.8L68.2 35.3L63 31L69.6 30.2L72 24Z" fill="#FEF08A"/>
+                    <defs>
+                        <linearGradient id="moonGold" x1="15" y1="8" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FEF08A"/>
+                            <stop offset="0.5" stop-color="#EAB308"/>
+                            <stop offset="1" stop-color="#A16207"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <p class="text-amber-300/90 text-sm tracking-widest mb-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            
+            <h1 class="text-2xl sm:text-3xl font-bold gold-gradient-text mb-4 leading-relaxed">
+                ئەسسالامۇ ئەلەيكۇم،<br>
+                <span id="gate-receiver-name" class="text-white">قەدىرلىك قېرىندىشىم!</span>
+            </h1>
+
+            <p class="text-slate-300 text-base mb-8 leading-relaxed px-2">
+                سىزگە يېقىن قېرىندىشىڭىز <span id="gate-sender-name" class="text-amber-300 font-semibold">بىر دوستىڭىز</span>دىن رامىزانلىق سەمىمىي سالام، دۇئا ۋە ئەسلەتمە كارتىسى كەلدى.
+            </p>
+
+            <!-- Wax Seal / Open Button -->
+            <button id="open-card-btn" onclick="openCard()" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-slate-950 transition-all duration-300 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.5)] hover:shadow-[0_0_35px_rgba(250,204,21,0.8)] hover:scale-105 active:scale-95 cursor-pointer">
+                <span class="flex items-center gap-3 text-lg">
+                    <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    كارتىنى ئېچىش ئۈچۈن بېسىڭ
+                </span>
+            </button>
+
+            <p class="text-xs text-slate-400 mt-6">ئاللاھ رامىزان ئېيىمىزنى مۇبارەك قىلسۇن</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         TOP FLOATING UTILITY BAR
+         ========================================== -->
+    <header class="sticky top-0 z-30 backdrop-blur-md bg-[#04121b]/80 border-b border-amber-500/20 px-4 py-3 no-print">
+        <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <!-- Brand / Title -->
+            <div class="flex items-center gap-2">
+                <span class="text-amber-400 text-xl">🌙</span>
+                <span class="font-bold text-amber-100 text-sm sm:text-base">رامىزانلىق ئەسلەتمە كارتىسى</span>
+            </div>
+
+            <!-- Controls: Font Switcher, Audio Toggle, Customize Button -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Font Switcher -->
+                <div class="flex items-center bg-slate-900/90 border border-amber-500/30 rounded-full p-0.5 text-xs">
+                    <button onclick="switchFont(1)" id="font-btn-1" class="px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 font-bold transition-all" title="نەسخ خەت نۇسخىسى">خەت ١</button>
+                    <button onclick="switchFont(2)" id="font-btn-2" class="px-2.5 py-1 rounded-full text-slate-300 hover:text-amber-300 transition-all" title="ئەمىرى خەت نۇسخىسى">خەت ٢</button>
+                    <button onclick="switchFont(3)" id="font-btn-3" class="px-2.5 py-1 rounded-full text-slate-300 hover:text-amber-300 transition-all" title="كلاسسىك خەت نۇسخىسى">خەت ٣</button>
+                </div>
+
+                <!-- Sound Effect Toggle -->
+                <button id="sound-toggle-btn" onclick="toggleSound()" class="p-2 rounded-full bg-slate-900/90 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition-all" title="ئاۋاز ئۈنۈمىنى ئېچىش/ئېتىش">
+                    <svg id="sound-on-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                    </svg>
+                    <svg id="sound-off-icon" class="w-5 h-5 hidden text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+                    </svg>
+                </button>
+
+                <!-- Customize Modal Trigger -->
+                <button onclick="openCustomizeModal()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-amber-600/30 border border-amber-400/50 text-amber-200 hover:bg-amber-500 hover:text-slate-950 font-semibold text-xs sm:text-sm transition-all cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    <span>كارتىنى خاسلاشتۇرۇش</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MAIN CONTENT CONTAINER
+         ========================================== -->
+    <main class="relative z-10 max-w-4xl mx-auto px-4 pt-8 pb-20 space-y-10">
+
+        <!-- 1. HERO GREETING & BROTHERHOOD LETTER -->
+        <section class="glass-card gold-border-glow rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden">
+            <!-- Ornate Corner Accents -->
+            <div class="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-amber-400/40 rounded-tr-3xl pointer-events-none m-3"></div>
+            <div class="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-amber-400/40 rounded-tl-3xl pointer-events-none m-3"></div>
+            <div class="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-amber-400/40 rounded-br-3xl pointer-events-none m-3"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-amber-400/40 rounded-bl-3xl pointer-events-none m-3"></div>
+
+            <!-- Crescent Moon Header -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center p-3 rounded-full bg-amber-500/10 border border-amber-500/30 mb-4 moon-animate">
+                    <svg class="w-12 h-12 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+                    </svg>
+                </div>
+                <p class="arabic-text text-amber-300 text-xl sm:text-2xl mb-2">رَمَضَانُ مُبَارَكٌ وَكُلُّ عَامٍ وَأَنْتُمْ بِخَيْرٍ</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gold-gradient-text leading-snug py-1">
+                    مۇبارەك رامىزان ئېيىڭىز قۇتلۇق بولسۇن!
+                </h2>
+            </div>
+
+            <!-- Personalized Salutation -->
+            <div class="bg-slate-900/60 border border-amber-500/25 rounded-2xl p-6 sm:p-8 mb-6 shadow-inner">
+                <div class="flex items-center gap-2 text-amber-300 font-bold text-xl sm:text-2xl mb-4">
+                    <span>ئەسسالامۇ ئەلەيكۇم ۋەرەھمەتۇللاھى ۋەبەرەكاتۇھۇ، قەدىرلىك قېرىندىشىم</span>
+                    <span id="card-receiver-name" class="underline decoration-amber-400/60 decoration-wavy underline-offset-8 text-white">ئەزىز قېرىندىشىم</span>!
+                </div>
+
+                <!-- Heartfelt Message Body -->
+                <div id="card-message-body" class="text-slate-200 text-base sm:text-lg space-y-4 leading-loose text-justify">
+                    <p>
+                        مېھرىبان ۋە شەپقەتلىك ئاللاھنىڭ پەزلى-كەرىمى بىلەن يەنە بىر قېتىم رەھمەت، مەغپىرەت ۋە دوزاختىن ئازاد بولۇش ئېيى بولغان مۇبارەك رامىزانغا يېتىپ كەلدۇق. ئاللاھ يولىدا دوستلاشقان، قەلبىمگە ئەڭ يېقىن بولغان سىزدەك بىر قېرىندىشىمنى بۇ مۇبارەك كۈنلەردە ئەسلەش ۋە سىزگە ياخشىلىق تىلەش مەن ئۈچۈن چەكسىز خۇشاللىقتۇر.
+                    </p>
+                    <p>
+                        پەيغەمبىرىمىز مۇھەممەد ئەلەيھىسسالام: <span class="text-amber-300 font-medium">«مۇسۇلمان كىشىنىڭ قېرىندىشىغا غايىبانە قىلغان دۇئاسى ئىجابەت بولىدۇ، ئۇنىڭ بېشىدا بىر پەرىشتە تۇرۇپ، قېرىندىشىغا ياخشى دۇئا قىلغان چاغدا: ئامىن، ساڭىمۇ شۇنىڭ ئوخشىشى بولسۇن، دەيدۇ»</span> دېگەن ئىكەن. شۇڭا بۇ بەرىكەتلىك ئايدا ئىپتار ۋە سەھەر ۋاقىتلىرىدا بىر-بىرىمىزنى سالىھ دۇئالىرىمىزدىن ئۇنتۇپ قالمايلى.
+                    </p>
+                    <p>
+                        ئۇلۇغ ئاللاھتىن سىزنىڭ ۋە ئائىلىڭىزدىكىلەرنىڭ تۇتقان روزىلىرىنى، ئوقۇغان ناماز ۋە قۇرئان تىلاۋەتلىرىنى قوبۇل قىلىشىنى، قەلبىڭىزگە ھىدايەت نۇرى ۋە خاتىرجەملىك ئاتا قىلىشىنى، ھەمدە بىزنى دۇنيادا ئۆز رازىلىقى ئۈچۈن جەم قىلغىنىدەك، ئاخىرەتتىمۇ پىردەۋس جەننىتىدە بىرگە قىلىشىنى چىن دىلىمدىن تىلەيمەن!
+                    </p>
+                </div>
+
+                <!-- Sender Signature -->
+                <div class="mt-8 pt-4 border-t border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="text-amber-200/80 text-sm">
+                        📍 قەلبتىن چىققان رامىزانلىق سالام ۋە دۇئا بىلەن:
+                    </div>
+                    <div class="text-left sm:text-right">
+                        <span class="text-xs text-slate-400 block">سىزنى ئاللاھ ئۈچۈن ياخشى كۆرگۈچى قېرىندىشىڭىز:</span>
+                        <span id="card-sender-name" class="text-xl font-bold gold-gradient-text">سەمىمىي قېرىندىشىڭىز</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Buttons inside Hero -->
+            <div class="flex flex-wrap items-center justify-center gap-4 no-print">
+                <button onclick="openCustomizeModal()" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 text-amber-200 transition-all text-sm font-medium cursor-pointer">
+                    <span>✍️ ئىسىم ۋە تەبرىك سۆزىنى ئۆزگەرتىش</span>
+                </button>
+                <button onclick="copyShareLink()" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/40 text-emerald-200 transition-all text-sm font-medium cursor-pointer">
+                    <span>🔗 قېرىندىشىمغا ئەۋەتىش ئۇلانمىسىنى كۆچۈرۈش</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE SPIRITUAL REMINDERS GRID (Checklist + Tasbih) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- 2A. DAILY SPIRITUAL CHECKLIST (كۈندىلىك ئىبادەت ئەسلەتمىسى) -->
+            <section class="glass-card gold-border rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-amber-300 flex items-center gap-2.5">
+                            <span class="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400">📋</span>
+                            كۈندىلىك ئىبادەت ئەسلەتمىسى
+                        </h3>
+                        <button onclick="resetChecklist()" class="text-xs text-slate-400 hover:text-amber-300 underline cursor-pointer">قايتا باشلاش</button>
+                    </div>
+
+                    <p class="text-slate-300 text-sm mb-5">
+                        «ئىبادەتلەرنىڭ ئاللاھقا ئەڭ يېقىملىقى — ئاز بولسىمۇ داۋاملاشقىنىدۇر.» بۈگۈنكى ئەمەللەرنى بىرلىكتە تاماملايلى:
+                    </p>
+
+                    <!-- Progress Bar -->
+                    <div class="mb-6">
+                        <div class="flex justify-between text-xs text-amber-200 mb-1.5">
+                            <span>بۈگۈنكى نىشان نىسبىتى</span>
+                            <span id="checklist-progress-text" class="font-bold">0 / 6 (0%)</span>
+                        </div>
+                        <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-amber-500/30">
+                            <div id="checklist-progress-bar" class="h-full bg-gradient-to-l from-amber-400 to-emerald-500 transition-all duration-500 w-0"></div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist Items -->
+                    <div id="checklist-container" class="space-y-3">
+                        <!-- Dynamically rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Encouragement Banner -->
+                <div id="checklist-congrats" class="mt-6 p-3.5 rounded-2xl bg-emerald-950/70 border border-emerald-500/40 text-emerald-200 text-center text-sm hidden">
+                    ماشائاللاھ! بۈگۈنكى ئىبادەت نىشانلىرىڭىزنى تولۇق تاماملىدىڭىز. ئاللاھ قوبۇل قىلسۇن! 🌟
+                </div>
+            </section>
+
+            <!-- 2B. INTERACTIVE DIGITAL TASBIH COUNTER (تەسبىھ سانىغۇچ) -->
+            <section class="glass-card gold-border rounded-3xl p-6 sm:p-8 flex flex-col justify-between items-center text-center relative overflow-hidden">
+                <div class="w-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-amber-300 flex items-center gap-2.5">
+                            <span class="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400">📿</span>
+                            رەقەملىك تەسبىھ سانىغۇچ
+                        </h3>
+                        <button onclick="resetTasbih()" class="text-xs text-slate-400 hover:text-amber-300 underline cursor-pointer">نۆللەش</button>
+                    </div>
+
+                    <p class="text-slate-300 text-sm mb-4">
+                        بىكار ۋاقىتلىرىمىزنى زىكىر-تەسبىھ بىلەن ئۆتكۈزۈپ، قەلبىمىزنى نۇرلاندۇرايلى:
+                    </p>
+
+                    <!-- Selectable Dhikr Phrases -->
+                    <div class="grid grid-cols-2 gap-2 mb-6" id="dhikr-selector">
+                        <button onclick="selectDhikr(0)" class="dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-amber-500 text-slate-950 border-amber-400">
+                            سۇبھانەللاھ
+                        </button>
+                        <button onclick="selectDhikr(1)" class="dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-slate-900/70 text-slate-200 border-amber-500/25 hover:border-amber-400">
+                            ئەلھەمدۇلىللاھ
+                        </button>
+                        <button onclick="selectDhikr(2)" class="dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-slate-900/70 text-slate-200 border-amber-500/25 hover:border-amber-400">
+                            ئاللاھۇ ئەكبەر
+                        </button>
+                        <button onclick="selectDhikr(3)" class="dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-slate-900/70 text-slate-200 border-amber-500/25 hover:border-amber-400">
+                            ئەستەغفىرۇللاھ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active Dhikr Display -->
+                <div class="my-2">
+                    <p id="active-dhikr-arabic" class="arabic-text text-2xl sm:text-3xl text-amber-300 mb-1">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</p>
+                    <p id="active-dhikr-meaning" class="text-xs text-slate-400">ئاللاھ بارلىق نۇقسانلاردىن پاكتۇر ۋە ئۇنىڭغا ھەمدۇ-سانالار بولسۇن</p>
+                </div>
+
+                <!-- Tactile Circular Tasbih Button -->
+                <div class="relative my-4 flex items-center justify-center">
+                    <div id="tasbih-ripple-container" class="absolute inset-0 pointer-events-none flex items-center justify-center"></div>
+                    
+                    <button id="tasbih-btn" onclick="incrementTasbih()" class="relative z-10 w-40 h-40 sm:w-44 sm:h-44 rounded-full bg-gradient-to-b from-emerald-800 via-emerald-950 to-slate-950 border-4 border-amber-400/70 shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:shadow-[0_0_45px_rgba(234,179,8,0.45)] active:scale-95 transition-all flex flex-col items-center justify-center cursor-pointer group">
+                        <span id="tasbih-count" class="text-4xl sm:text-5xl font-extrabold gold-gradient-text font-mono">0</span>
+                        <span class="text-xs text-amber-200/80 mt-2">نىشان: <span id="tasbih-target">33</span></span>
+                        <span class="text-[11px] text-emerald-300/70 mt-1 group-hover:text-amber-300 transition-colors">زىكىر ئۈچۈن بېسىڭ</span>
+                    </button>
+                </div>
+
+                <!-- Total Session Counter & Target Switcher -->
+                <div class="w-full flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-amber-500/20">
+                    <span>جەمئىي ئوقۇلغىنى: <strong id="tasbih-total" class="text-amber-300">0</strong> قېتىم</span>
+                    <button onclick="toggleTasbihTarget()" class="text-amber-300 hover:underline cursor-pointer">
+                        نىشاننى ئالماشتۇرۇش (33 / 99)
+                    </button>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 3. CURATED RAMADAN DUAS & HADITH CAROUSEL (رامىزان دۇئالىرى ۋە ھەدىسلەر) -->
+        <section class="glass-card gold-border rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-amber-300 flex items-center gap-2.5">
+                        <span class="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400">🤲</span>
+                        رامىزانلىق تاللانما دۇئالار ۋە ھەدىسلەر
+                    </h3>
+                    <p class="text-slate-300 text-sm mt-1">كۈندىلىك دۇئالىرىمىزدا ئوقۇش ۋە ئەستە تۇتۇش ئۈچۈن مۇھىم دۇئالار:</p>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                    <button onclick="prevDua()" class="p-2.5 rounded-xl bg-slate-900/90 border border-amber-500/30 text-amber-300 hover:bg-amber-500 hover:text-slate-950 transition-all cursor-pointer" title="ئالدىنقى دۇئا">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <span id="dua-indicator" class="text-sm text-amber-200 font-mono px-2">1 / 4</span>
+                    <button onclick="nextDua()" class="p-2.5 rounded-xl bg-slate-900/90 border border-amber-500/30 text-amber-300 hover:bg-amber-500 hover:text-slate-950 transition-all cursor-pointer" title="كېيىنكى دۇئا">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dua Slide Card -->
+            <div class="bg-slate-900/75 border border-amber-500/30 rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 min-h-[250px] flex flex-col justify-between">
+                <div>
+                    <span id="dua-badge" class="inline-block px-4 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-semibold mb-4">
+                        ئىپتار قىلغاندا ئوقۇلىدىغان دۇئا
+                    </span>
+                    
+                    <p id="dua-arabic" class="arabic-text text-2xl sm:text-3xl md:text-4xl text-white my-4 leading-relaxed px-2">
+                        ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ
+                    </p>
+                    
+                    <p id="dua-uyghur" class="text-amber-100 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mt-4">
+                        «ئۇسسۇزلۇق كەتتى، تومۇرلار نەملەندى ۋە ئاللاھ خالىسا ئەجىر-ساۋاب مۇقىم بولدى.»
+                    </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                    <span id="dua-source">مەنبە: ئەبۇ داۋۇد رىۋايىتى (سەھىھ)</span>
+                    <button onclick="copyCurrentDua()" class="text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer">
+                        <span>📋 دۇئانى كۆچۈرۈش</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-slate-400 text-xs sm:text-sm pt-6 pb-10 space-y-2">
+            <p class="text-amber-300/80">«مۆمىنلەر ھەقىقەتەن قېرىنداشتۇر» (سۈرە ھۇجۇرات، 10-ئايەت)</p>
+            <p>بۇ كارتا يېقىن قېرىنداشلار ئوتتۇرىسىدىكى مېھىر-مۇھەببەتنى ۋە ياخشىلىقنى ئەسلىتىش ئۈچۈن تەييارلاندى.</p>
+        </footer>
+    </main>
+
+    <!-- ==========================================
+         CUSTOMIZATION MODAL (كارتىنى خاسلاشتۇرۇش)
+         ========================================== -->
+    <div id="customize-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm no-print">
+        <div class="max-w-lg w-full glass-card gold-border-glow rounded-3xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-amber-500/20">
+                <h3 class="text-xl font-bold text-amber-300 flex items-center gap-2">
+                    <span>✨</span> كارتىنى قېرىندىشىڭىزغا خاسلاشتۇرۇڭ
+                </h3>
+                <button onclick="closeCustomizeModal()" class="text-slate-400 hover:text-white p-1 text-xl leading-none cursor-pointer">&times;</button>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-amber-200 mb-1.5">قېرىندىشىڭىزنىڭ ئىسمى (تاپشۇرۇۋالغۇچى):</label>
+                    <input type="text" id="input-receiver" placeholder="مەسىلەن: ئەركىنجان قېرىندىشىم" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-amber-500/40 text-white focus:outline-none focus:border-amber-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-sm text-amber-200 mb-1.5">سىزنىڭ ئىسمىڭىز (ئەۋەتكۈچى):</label>
+                    <input type="text" id="input-sender" placeholder="مەسىلەن: ئابدۇللاھ" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-amber-500/40 text-white focus:outline-none focus:border-amber-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-sm text-amber-200 mb-1.5">ئالاھىدە يۈرەك سۆزىڭىز (ئىختىيارىي ئۆزگەرتسىڭىز بولىدۇ):</label>
+                    <textarea id="input-message" rows="5" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-amber-500/40 text-white focus:outline-none focus:border-amber-400 text-sm leading-relaxed"></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                    <button onclick="applyCustomization()" class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-sm hover:brightness-110 transition-all cursor-pointer">
+                        💾 ساقلاش ۋە كارتىدا كۆرۈش
+                    </button>
+                    <button onclick="saveAndCopyLink()" class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all cursor-pointer">
+                        🔗 ئۇلانمىنى كۆچۈرۈۋېلىش
+                    </button>
+                </div>
+
+                <p class="text-xs text-slate-400 text-center pt-2">
+                    ئەسكەرتىش: ئۇلانمىنى كۆچۈرۈپ قېرىندىشىڭىزغا ئەۋەتسىڭىز ياكى بۇ HTML ھۆججەتنى ئەۋەتسىڭىز، ئۇ كارتىنى ئاچقاندا سىز يازغان ئىسىم بىلەن ئېچىلىدۇ.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Toast (No alert() used) -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-2xl bg-amber-400 text-slate-950 font-bold text-sm shadow-2xl transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+        ئۇچۇر كۆچۈرۈلدى!
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT LOGIC
+         ========================================== -->
+    <script>
+        /* ------------------------------------------
+           1. WEB AUDIO SYNTHESIS (Gentle Chimes & Clicks)
+           ------------------------------------------ */
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playGentleChime(type = 'tick') {
+            if (!soundEnabled) return;
+            try {
+                initAudio();
+                if (!audioCtx) return;
+
+                const now = audioCtx.currentTime;
+                if (type === 'open') {
+                    // Warm spiritual chord arpeggio on card open
+                    const notes = [329.63, 440, 554.37, 659.25]; // E4, A4, C#5, E5
+                    notes.forEach((freq, idx) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+                        gain.gain.setValueAtTime(0.001, now + idx * 0.12);
+                        gain.gain.exponentialRampToValueAtTime(0.12, now + idx * 0.12 + 0.05);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.12 + 1.4);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now + idx * 0.12);
+                        osc.stop(now + idx * 0.12 + 1.5);
+                    });
+                } else if (type === 'tasbih') {
+                    // Subtle wooden bead click sound
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(520, now);
+                    osc.frequency.exponentialRampToValueAtTime(180, now + 0.045);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'target') {
+                    // Target reached bell
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(880, now);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.95);
+                }
+            } catch (e) {
+                // Ignore audio errors if restricted
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('sound-on-icon').classList.toggle('hidden', !soundEnabled);
+            document.getElementById('sound-off-icon').classList.toggle('hidden', soundEnabled);
+            showToast(soundEnabled ? 'ئاۋاز ئۈنۈمى ئېچىلدى 🔊' : 'ئاۋاز ئۈنۈمى ئېتىلدى 🔇');
+        }
+
+        /* ------------------------------------------
+           2. ENVELOPE GATE & SPARKLE ANIMATION
+           ------------------------------------------ */
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let sparkles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        function initStars() {
+            stars = [];
+            const count = Math.min(110, Math.floor((canvas.width * canvas.height) / 12000));
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.7 + 0.4,
+                    alpha: Math.random(),
+                    speed: (Math.random() * 0.015 + 0.005) * (Math.random() < 0.5 ? 1 : -1)
+                });
+            }
+        }
+
+        function triggerSparkleBurst() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            for (let i = 0; i < 65; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 6 + 1.5;
+                sparkles.push({
+                    x: centerX,
+                    y: centerY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    radius: Math.random() * 3 + 1,
+                    alpha: 1,
+                    color: Math.random() > 0.3 ? '#fde047' : '#34d399'
+                });
+            }
+        }
+
+        function animateSky() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw twinkling stars
+            stars.forEach(s => {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0.15) s.speed = -s.speed;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(254, 240, 138, ${Math.max(0.1, Math.min(1, s.alpha))})`;
+                ctx.fill();
+            });
+
+            // Draw burst sparkles
+            for (let i = sparkles.length - 1; i >= 0; i--) {
+                const p = sparkles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.016;
+                if (p.alpha <= 0) {
+                    sparkles.splice(i, 1);
+                    continue;
+                }
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+
+            requestAnimationFrame(animateSky);
+        }
+
+        function openCard() {
+            playGentleChime('open');
+            triggerSparkleBurst();
+            const gate = document.getElementById('welcome-gate');
+            gate.classList.add('gate-open');
+            setTimeout(() => {
+                gate.style.display = 'none';
+            }, 950);
+        }
+
+        /* ------------------------------------------
+           3. FONT SWITCHER
+           ------------------------------------------ */
+        function switchFont(styleIndex) {
+            document.body.classList.remove('font-style-1', 'font-style-2', 'font-style-3');
+            document.body.classList.add(`font-style-${styleIndex}`);
+
+            [1, 2, 3].forEach(i => {
+                const btn = document.getElementById(`font-btn-${i}`);
+                if (i === styleIndex) {
+                    btn.className = 'px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 font-bold transition-all';
+                } else {
+                    btn.className = 'px-2.5 py-1 rounded-full text-slate-300 hover:text-amber-300 transition-all';
+                }
+            });
+        }
+
+        /* ------------------------------------------
+           4. DAILY SPIRITUAL CHECKLIST
+           ------------------------------------------ */
+        const defaultDeeds = [
+            { id: 'namaz', title: 'بەش ۋاقىت پەرز نامازنى جامائەت بىلەن ياكى ئۆز ۋاقتىدا ئوقۇش', done: false },
+            { id: 'quran', title: 'قۇرئان كەرىمدىن كۈندىلىك ۋىرد (ئاز دېگەندە بىر نەچچە بەت) تىلاۋەت قىلىش', done: false },
+            { id: 'tarawih', title: 'تەراۋىھ نامىزى ۋە كېچىلىك تەھەججۇد نامىزىغا ئەھمىيەت بېرىش', done: false },
+            { id: 'adhkar', title: 'ئەتىگەنلىك ۋە كەچلىك سۈننەت زىكىر-دۇئالارنى ئوقۇش', done: false },
+            { id: 'sadaqah', title: 'كۈندە بىر قېتىم بولسىمۇ سەدىقە بېرىش ياكى بىر كىشىگە ياخشىلىق قىلىش', done: false },
+            { id: 'brother_dua', title: 'ئاللاھ يولىدىكى يېقىن قېرىنداشلارغا ۋە ئۈممەتكە غايىبانە دۇئا قىلىش', done: false }
+        ];
+
+        let checklistData = [];
+
+        function loadChecklist() {
+            try {
+                const saved = localStorage.getItem('uyghur_ramadan_checklist_v1');
+                if (saved) {
+                    checklistData = JSON.parse(saved);
+                } else {
+                    checklistData = JSON.parse(JSON.stringify(defaultDeeds));
+                }
+            } catch (e) {
+                checklistData = JSON.parse(JSON.stringify(defaultDeeds));
+            }
+            renderChecklist();
+        }
+
+        function saveChecklist() {
+            try {
+                localStorage.setItem('uyghur_ramadan_checklist_v1', JSON.stringify(checklistData));
+            } catch (e) {}
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+
+            let completed = 0;
+            checklistData.forEach((item, index) => {
+                if (item.done) completed++;
+
+                const row = document.createElement('div');
+                row.onClick = () => toggleChecklistItem(index);
+                row.className = `flex items-center gap-3.5 p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                    item.done
+                        ? 'bg-emerald-950/50 border-emerald-500/40 text-emerald-200'
+                        : 'bg-slate-900/60 border-amber-500/20 text-slate-200 hover:border-amber-400/50'
+                }`;
+                row.setAttribute('onclick', `toggleChecklistItem(${index})`);
+
+                row.innerHTML = `
+                    <div class="w-6 h-6 rounded-lg flex items-center justify-center border transition-all shrink-0 ${
+                        item.done
+                            ? 'bg-emerald-500 border-emerald-400 text-slate-950'
+                            : 'border-amber-400/50 bg-slate-950'
+                    }">
+                        ${item.done ? '✓' : ''}
+                    </div>
+                    <span class="text-sm sm:text-base flex-1 ${item.done ? 'line-through opacity-75' : ''}">${item.title}</span>
+                `;
+                container.appendChild(row);
+            });
+
+            const total = checklistData.length;
+            const percent = Math.round((completed / total) * 100);
+            document.getElementById('checklist-progress-text').textContent = `${completed} / ${total} (${percent}%)`;
+            document.getElementById('checklist-progress-bar').style.width = `${percent}%`;
+
+            const congrats = document.getElementById('checklist-congrats');
+            if (completed === total) {
+                congrats.classList.remove('hidden');
+            } else {
+                congrats.classList.add('hidden');
+            }
+        }
+
+        function toggleChecklistItem(index) {
+            checklistData[index].done = !checklistData[index].done;
+            playGentleChime(checklistData[index].done ? 'tasbih' : 'tick');
+            saveChecklist();
+            renderChecklist();
+        }
+
+        function resetChecklist() {
+            checklistData.forEach(item => item.done = false);
+            saveChecklist();
+            renderChecklist();
+            showToast('ئىبادەت جەدۋىلى يېڭىلاندى!');
+        }
+
+        /* ------------------------------------------
+           5. INTERACTIVE TASBIH COUNTER
+           ------------------------------------------ */
+        const dhikrList = [
+            {
+                title: 'سۇبھانەللاھ',
+                arabic: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
+                meaning: 'ئاللاھ بارلىق نۇقسانلاردىن پاكتۇر ۋە ئۇنىڭغا ھەمدۇ-سانالار بولسۇن'
+            },
+            {
+                title: 'ئەلھەمدۇلىللاھ',
+                arabic: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+                meaning: 'بارلىق گۈزەل مەدھىيەلەر ئالەملەرنىڭ پەرۋەردىگارى ئاللاھقا خاستۇر'
+            },
+            {
+                title: 'ئاللاھۇ ئەكبەر',
+                arabic: 'اللَّهُ أَكْبَرُ كَبِيرًا',
+                meaning: 'ئاللاھ ھەممىدىن بۈيۈكتۇر'
+            },
+            {
+                title: 'ئەستەغفىرۇللاھ',
+                arabic: 'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ',
+                meaning: 'ئاللاھتىن مەغپىرەت تىلەيمەن ۋە ئۇنىڭغا تەۋبە قىلىمەن'
+            }
+        ];
+
+        let tasbihCount = 0;
+        let tasbihTotal = 0;
+        let tasbihTarget = 33;
+
+        function selectDhikr(idx) {
+            const d = dhikrList[idx];
+            document.getElementById('active-dhikr-arabic').textContent = d.arabic;
+            document.getElementById('active-dhikr-meaning').textContent = d.meaning;
+
+            const tabs = document.querySelectorAll('.dhikr-tab');
+            tabs.forEach((btn, i) => {
+                if (i === idx) {
+                    btn.className = 'dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-amber-500 text-slate-950 border-amber-400';
+                } else {
+                    btn.className = 'dhikr-tab px-3 py-2 rounded-xl text-sm font-bold border transition-all cursor-pointer bg-slate-900/70 text-slate-200 border-amber-500/25 hover:border-amber-400';
+                }
+            });
+            tasbihCount = 0;
+            updateTasbihUI();
+        }
+
+        function incrementTasbih() {
+            tasbihCount++;
+            tasbihTotal++;
+
+            // Spawn ripple
+            const rippleContainer = document.getElementById('tasbih-ripple-container');
+            const ripple = document.createElement('div');
+            ripple.className = 'w-40 h-40 rounded-full border-2 border-amber-400/70 ripple-circle absolute';
+            rippleContainer.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 650);
+
+            if (tasbihCount >= tasbihTarget) {
+                playGentleChime('target');
+                showToast(`ماشائاللاھ! ${tasbihTarget} قېتىملىق زىكىر تاماملاندى ✨`);
+                tasbihCount = 0;
+            } else {
+                playGentleChime('tasbih');
+            }
+
+            updateTasbihUI();
+        }
+
+        function resetTasbih() {
+            tasbihCount = 0;
+            updateTasbihUI();
+            showToast('تەسبىھ سانىغۇچ نۆللەندى');
+        }
+
+        function toggleTasbihTarget() {
+            tasbihTarget = tasbihTarget === 33 ? 99 : 33;
+            document.getElementById('tasbih-target').textContent = tasbihTarget;
+            showToast(`تەسبىھ نىشانى ${tasbihTarget} گە تەڭشەلدى`);
+        }
+
+        function updateTasbihUI() {
+            document.getElementById('tasbih-count').textContent = tasbihCount;
+            document.getElementById('tasbih-total').textContent = tasbihTotal;
+        }
+
+        /* ------------------------------------------
+           6. CURATED RAMADAN DUAS CAROUSEL
+           ------------------------------------------ */
+        const duas = [
+            {
+                badge: 'ئىپتار قىلغاندا ئوقۇلىدىغان دۇئا',
+                arabic: 'ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ',
+                uyghur: '«ئۇسسۇزلۇق كەتتى، تومۇرلار نەملەندى ۋە ئاللاھ خالىسا ئەجىر-ساۋاب مۇقىم بولدى.»',
+                source: 'مەنبە: ئەبۇ داۋۇد رىۋايىتى (سەھىھ)'
+            },
+            {
+                badge: 'شەبى قەدىر كېچىسىنىڭ دۇئاسى',
+                arabic: 'اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي',
+                uyghur: '«ئى ئاللاھ! سەن ھەقىقەتەن كەچۈرگۈچىسەن، كەچۈرۈشنى ياخشى كۆرىسەن، مېنى مەغپىرەت قىلغىن (كەچۈرگىن).»',
+                source: 'مەنبە: تىرمىزى رىۋايىتى (سەھىھ)'
+            },
+            {
+                badge: 'ئاللاھ يولىدىكى قېرىندىشىغا قىلىنىدىغان دۇئا',
+                arabic: 'أَحَبَّكَ الَّذِي أَحْبَبْتَنِي لَهُ، وَبَارَكَ اللَّهُ فِيكَ وَفِي أَهْلِكَ',
+                uyghur: '«مېنى كىم ئۈچۈن ياخشى كۆرگەن بولساڭ، ئۇ زات (ئاللاھ) سېنىمۇ ياخشى كۆرسۇن! ئاللاھ ساڭا ۋە ئائىلەڭگە بەرىكەت ئاتا قىلسۇن!»',
+                source: 'مەنبە: ئەبۇ داۋۇد رىۋايىتى'
+            },
+            {
+                badge: 'قەلبنى مۇستەھكەملەش ۋە ھىدايەت دۇئاسى',
+                arabic: 'يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ',
+                uyghur: '«ئى قەلبلەرنى ئۆرۈپ-چۆرۈگۈچى ئۇلۇغ ئاللاھ! قەلبىمىزنى ئۆز دىنىڭدا ۋە تائەت-ئىبادىتىڭدە مۇستەھكەم قىلغىن!»',
+                source: 'مەنبە: تىرمىزى رىۋايىتى'
+            }
+        ];
+
+        let currentDuaIndex = 0;
+
+        function renderDua() {
+            const d = duas[currentDuaIndex];
+            document.getElementById('dua-badge').textContent = d.badge;
+            document.getElementById('dua-arabic').textContent = d.arabic;
+            document.getElementById('dua-uyghur').textContent = d.uyghur;
+            document.getElementById('dua-source').textContent = d.source;
+            document.getElementById('dua-indicator').textContent = `${currentDuaIndex + 1} / ${duas.length}`;
+        }
+
+        function nextDua() {
+            currentDuaIndex = (currentDuaIndex + 1) % duas.length;
+            renderDua();
+        }
+
+        function prevDua() {
+            currentDuaIndex = (currentDuaIndex - 1 + duas.length) % duas.length;
+            renderDua();
+        }
+
+        function copyCurrentDua() {
+            const d = duas[currentDuaIndex];
+            const text = `${d.badge}\n\n${d.arabic}\n\n${d.uyghur}\n(${d.source})`;
+            copyTextToClipboard(text, 'دۇئا كۆچۈرۈۋېلىندى! 📋');
+        }
+
+        /* ------------------------------------------
+           7. PERSONALIZATION & SHAREABLE LINK
+           ------------------------------------------ */
+        let currentData = {
+            to: 'ئەزىز قېرىندىشىم',
+            from: 'سەمىمىي قېرىندىشىڭىز',
+            msg: ''
+        };
+
+        function loadFromUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const toParam = params.get('to');
+            const fromParam = params.get('from');
+            const msgParam = params.get('msg');
+
+            if (toParam) currentData.to = toParam;
+            if (fromParam) currentData.from = fromParam;
+            if (msgParam) currentData.msg = msgParam;
+
+            updateCardPersonalization();
+        }
+
+        function updateCardPersonalization() {
+            document.getElementById('gate-receiver-name').textContent = currentData.to + '!';
+            document.getElementById('gate-sender-name').textContent = currentData.from;
+            document.getElementById('card-receiver-name').textContent = currentData.to;
+            document.getElementById('card-sender-name').textContent = currentData.from;
+
+            if (currentData.msg && currentData.msg.trim() !== '') {
+                const paragraphs = currentData.msg.split('\n').filter(p => p.trim() !== '');
+                const container = document.getElementById('card-message-body');
+                container.innerHTML = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('');
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag]));
+        }
+
+        function openCustomizeModal() {
+            document.getElementById('input-receiver').value = currentData.to;
+            document.getElementById('input-sender').value = currentData.from;
+            
+            if (!currentData.msg) {
+                const ps = Array.from(document.querySelectorAll('#card-message-body p')).map(p => p.textContent.trim());
+                document.getElementById('input-message').value = ps.join('\n\n');
+            } else {
+                document.getElementById('input-message').value = currentData.msg;
+            }
+
+            const modal = document.getElementById('customize-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCustomizeModal() {
+            const modal = document.getElementById('customize-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function applyCustomization() {
+            const toVal = document.getElementById('input-receiver').value.trim();
+            const fromVal = document.getElementById('input-sender').value.trim();
+            const msgVal = document.getElementById('input-message').value.trim();
+
+            if (toVal) currentData.to = toVal;
+            if (fromVal) currentData.from = fromVal;
+            if (msgVal) currentData.msg = msgVal;
+
+            updateCardPersonalization();
+            closeCustomizeModal();
+            showToast('كارتا مەزمۇنى مۇۋەپپەقىيەتلىك يېڭىلاندى! ✨');
+        }
+
+        function generateShareUrl() {
+            const baseUrl = window.location.href.split('?')[0];
+            const params = new URLSearchParams();
+            params.set('to', currentData.to);
+            params.set('from', currentData.from);
+            if (currentData.msg) {
+                params.set('msg', currentData.msg);
+            }
+            return `${baseUrl}?${params.toString()}`;
+        }
+
+        function saveAndCopyLink() {
+            applyCustomization();
+            const url = generateShareUrl();
+            copyTextToClipboard(url, 'خاسلاشتۇرۇلغان كارتا ئۇلانمىسى كۆچۈرۈلدى! قېرىندىشىڭىزغا ئەۋەتسىڭىز بولىدۇ 🔗');
+        }
+
+        function copyShareLink() {
+            const url = generateShareUrl();
+            copyTextToClipboard(url, 'كارتا ئۇلانمىسى كۆچۈرۈلدى! قېرىندىشىڭىزغا ئەۋەتىڭ 🔗');
+        }
+
+        /* ------------------------------------------
+           8. CLIPBOARD & TOAST HELPERS
+           ------------------------------------------ */
+        function copyTextToClipboard(text, successMsg) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast('كۆچۈرۈشتە خاتالىق كۆرۈلدى');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4');
+            }, 3200);
+        }
+
+        /* ------------------------------------------
+           INITIALIZATION ON LOAD
+           ------------------------------------------ */
+        window.onload = function () {
+            resizeCanvas();
+            animateSky();
+            loadFromUrlParams();
+            loadChecklist();
+            renderDua();
+            window.addEventListener('resize', resizeCanvas);
+        };
+    </script>
+</body>
+</html>
